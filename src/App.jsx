@@ -1,12 +1,19 @@
-import Login from "./pages/Login"
+import React from "react";
+import Login from "./pages/Login";
+import Main from "./pages/Main"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
 function App() {
 
   return (
-      <div className="h-screen bg-[#242424]">
-        <Login />
-      </div>
+    <Router>
+      <Routes>
+        <Route path="/Login" element={<Login />}/>
+        <Route path="/Main" element={<Main />}/>
+      </Routes>
+    </Router>
+
   )
 }
 
