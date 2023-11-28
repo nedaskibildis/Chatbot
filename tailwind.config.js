@@ -8,6 +8,7 @@ export default {
         midBlue: '#427D9D',
         lightBlue: '#9BBEC8',
         lightestBlue: '#DDF2FD',
+        primaryGray: '#E7E5E5',
         // Add more custom colors as needed
       },
     },
