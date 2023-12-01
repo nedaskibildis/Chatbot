@@ -9,6 +9,7 @@ export default {
         lightBlue: '#9BBEC8',
         lightestBlue: '#DDF2FD',
         primaryGray: '#E7E5E5',
+        lightGray: '#EBEBEB'
         // Add more custom colors as needed
       },
     },

@@ -102,9 +102,7 @@ export default function Login() {
                 Login
               </button>
               {/* Sign Up link */}
-              <a href="/">
-                <p className="text-xs text-center underline text-midBlue">Don't Have An Account? Sign Up Here</p>
-              </a>
+                <p className="text-xs text-center text-midBlue"> Don't Have An Account? <a href="/register" className="underline">Sign Up Here</a></p>
             </form>
           </div>
         </div>
