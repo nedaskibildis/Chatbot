@@ -21,18 +21,20 @@ app.post('/login', (req, res) => {
 app.post('/register', async (req, res) => {
     console.log('HELLO');
     const {firstname, lastname, password, email} = req.body;
+    const existingUser = await User.findOne({email});
     const user = new User({
         firstName: firstname,
         lastName: lastname,
         password: password,
         email: email
     })
+ 
 
-    const existingUser = await User.findOne({email});
     if(existingUser) {
         console.log('exists Already');
-        res.sendStatus(404)
-    } else {
+        res.sendStatus(409);
+    }
+    else {
         await user.save();
         res.sendStatus(200);
     }
