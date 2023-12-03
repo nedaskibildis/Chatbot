@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 import User from './models/user.js';
 
@@ -13,21 +14,31 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post('/login', (req, res) => {
-    console.log(req.body);
-    res.sendStatus(200);
+app.post('/login', async (req, res) => {
+    try {
+    const user = await User.findOne({email: req.body.email});
+    const allowUser = await bcrypt.compare(req.body.password, user.password);
+
+    if(allowUser) {
+        res.sendStatus(200);
+    } else {
+        res.status(401).send('No User Found Or Invalid Password')
+        
+    }
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 app.post('/register', async (req, res) => {
     console.log('HELLO');
-    const {firstname, lastname, password, email} = req.body;
-    const existingUser = await User.findOne({email});
-    const user = new User({
-        firstName: firstname,
-        lastName: lastname,
-        password: password,
-        email: email
-    })
+    const existingUser = await User.findOne({email: req.body.email});
+    const user = {
+        firstName: req.body.firstname,
+        lastName: req.body.lastname,
+        password: req.body.password,
+        email: req.body.email
+    }
  
 
     if(existingUser) {
@@ -35,7 +46,10 @@ app.post('/register', async (req, res) => {
         res.sendStatus(409);
     }
     else {
-        await user.save();
+        user.password = await bcrypt.hash(user.password, 10);
+        console.log(user.password);
+        const newUser = new User(user);
+        await newUser.save();
         res.sendStatus(200);
     }
 })
