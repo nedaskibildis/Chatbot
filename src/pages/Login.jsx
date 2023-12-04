@@ -10,9 +10,11 @@ import user from "../assets/userLogo.svg";
 export default function Login() {
   // State to hold form data
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -34,7 +36,7 @@ export default function Login() {
 
       // Clear form data after submission
       setFormData({
-        username: '',
+        email: '',
         password: '',
       });
 
@@ -43,6 +45,8 @@ export default function Login() {
     } catch (err) {
       // Log any errors that occur during form submission
       console.log(err);
+      setErrorMessage(err.response.data)
+      console.log(errorMessage);
     }
   };
 
@@ -57,19 +61,22 @@ export default function Login() {
           </div>
           <div className="flex flex-col items-center justify-center space-y-6 mt-12">
             <h2 className="text-3xl font-extrabold text-primaryBlack">Login</h2>
+            {errorMessage && (
+              <p className=" text-xs text-red-400">{errorMessage}</p>
+            )}
             <form action="" onSubmit={handleSubmit} className="flex flex-col justify-center pb-12">
               {/* Username input field */}
               <div className="flex">
-                <label htmlFor="username" className="w-[1.6rem] bg-primaryGray h-6 rounded-l-[5px] pt-1 pl-2 justify-self-center">
+                <label htmlFor="email" className="w-[1.6rem] bg-primaryGray h-6 rounded-l-[5px] pt-1 pl-2 justify-self-center">
                   <img src={user} alt="user" />
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   onChange={handleChange}
-                  name="username"
-                  id="username"
+                  name="email"
+                  id="email"
                   className="bg-primaryGray rounded-r-[5px] px-3 mb-3 w-[12.35rem]"
-                  placeholder="Username"
+                  placeholder="Email"
                 />
               </div>
               {/* Password input field */}
