@@ -1,0 +1,17 @@
+export const emails = [
+    "john.doe@example.com",
+    "jane.smith@example.com",
+    "user123@example.com",
+    "test.email@example.com",
+    "sample.user@example.com",
+    "dummy.account@example.com",
+    "random.email@example.com",
+    "temp.email@example.com",
+    "placeholder@example.com",
+    "user.test@example.com",
+    "example.email@example.com",
+    "demo.user@example.com",
+    "email.test@example.com",
+    "user.demo@example.com",
+    "fake.email@example.com",
+]

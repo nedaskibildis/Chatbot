@@ -43,7 +43,6 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-    console.log('HELLO');
     const existingUser = await User.findOne({email: req.body.email});
     const user = {
         firstName: req.body.firstname,
@@ -64,6 +63,17 @@ app.post('/register', async (req, res) => {
         await newUser.save();
         res.sendStatus(200);
     }
+})
+
+app.post('/sidebar', async (req, res) => {
+    const user = await User.findOne({username: "nedas11"}).populate("friends");
+    const formattedFriends = user.friends.map(friend => ({
+        firstName: friend.firstName,
+        lastName: friend.lastName,
+        profilePhoto: friend.profilePhoto
+    }))
+
+    res.json({friends: formattedFriends});
 })
 
 app.listen(3000, () => {
