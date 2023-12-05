@@ -16,3 +16,15 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.icon-container:hover .message {
+  display: block;
+}
+
+.icon-container:hover .image {
+  display: hidden;
+}
+
+.message {
+  display: none;
+}

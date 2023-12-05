@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Icon from "./Icon"
 import axios from "axios";
 
@@ -11,13 +11,14 @@ export default function Sidebar () {
             const response = await axios.post('http://localhost:3000/Sidebar');
             const {friends: fetchedFriends} = response.data
             setFriends(fetchedFriends);
-            console.log(friends);
         } catch(err) {
             console.log(err)
         }
     }
 
-
+    useEffect(() => {
+        getFriends()
+    }, []);
 
     return (
         <div className="bg-primaryBlack w-1/12 h-screen overflow-scroll hide-scrollbar">
@@ -26,7 +27,6 @@ export default function Sidebar () {
                         <Icon key={index} image={`${friend.firstName[0]}`} message={`${friend.firstName} ${friend.lastName}`} />
                     ))}
                     <Icon image="N" message="Hello There"/>
-                    <button onClick={getFriends}> Click For Friends </button>
             </div>
         </div>
     )
