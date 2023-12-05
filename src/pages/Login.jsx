@@ -52,7 +52,7 @@ export default function Login() {
 
   // JSX for the Login component
   return (
-    <div className=" h-screen flex flex-col items-center justify-center bg-gradient-to-tl from-lightBlue to-midBlue">
+    <div className=" h-screen flex flex-col items-center justify-center bg-gradient-to-tl from-primaryBlack to-darkBlue">
       <div className=" font-Lato text-6xl mb-8 font-extrabold text-white">Welcome Back!</div>
       <div className="flex flex-col">
         <div className="w-1/4 min-w-[600px] h-[50vh] bg-[#FEFEFE] border-darkBlue  border-[3px] items-center flex rounded-3xl justify-center">

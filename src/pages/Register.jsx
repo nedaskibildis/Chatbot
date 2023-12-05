@@ -78,7 +78,7 @@ export default function Register() {
     }
 
     return (
-        <div className=" h-screen flex flex-col items-center justify-center bg-gradient-to-tl from-lightBlue to-midBlue">
+        <div className=" h-screen flex flex-col items-center justify-center bg-gradient-to-tl from-primaryBlack to-darkBlue">
             <h1 className="mb-3 text-4xl text-white font-bold">Welcome To Chatbot</h1>
             <div className="min-w-[400px] w-1/3 bg-white h-[70vh] rounded-lg">
                 <form action="" onChange={handleChange} onSubmit={handleSubmit} className="flex flex-col h-full w-full">

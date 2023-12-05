@@ -4,6 +4,7 @@ export default {
     extend: {
       colors: {
         primaryBlack: '#242424',
+        secondaryBlack: '#333333',
         darkBlue: '#164863',
         midBlue: '#427D9D',
         lightBlue: '#9BBEC8',
@@ -12,6 +13,9 @@ export default {
         lightGray: '#EBEBEB'
         // Add more custom colors as needed
       },
+      dropShadow: {
+        'Sidebar': '0 0px 10px rgba(66, 125, 157, 0.25)',
+      }
     },
   },
   content: [
