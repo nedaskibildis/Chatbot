@@ -3,15 +3,12 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema ({
     email: String,
+    username: String,
     firstName: String,
     lastName: String,
     password: String,
-    friends : [
-        {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-        }
-    ]
+    profilePhoto: {type: String, default: 'default_profile.jpg'},
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 })
 
 const User = mongoose.model('User', UserSchema);
